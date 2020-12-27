@@ -2,6 +2,8 @@
     Copyright (c) 2020 Chirag Patel
 
     aa calculator no program chhe.
+
+    navo ferfar - chirag patel - 2020 december 27
 */
 
 #include <iostream>
@@ -123,6 +125,7 @@ void prakarProgrammer(void)
     cin >> rakam2;
 
     cout << "\'o\'r \'a\'nd \'x\'or \'n\'ot xno\'r\' : ";
+    // 'o'r 'a'nd 'x'or 'n'ot xno'r' :
     char vikalp;
     cin >> vikalp;
 
@@ -159,6 +162,7 @@ void prakarProgrammer(void)
     cout << dec << "r2 = " << rakam2;
     cout << " (" << bitset<8>(rakam2) << ")";
     cout << " (0x" << hex << rakam2 << ") " << endl;
+    // r1 = 45 (00101101) (0x2d) r2 = 10 (00001010) (0xa)
 
     unsigned int uttar = 0;
     switch (vikalp)
@@ -203,6 +207,7 @@ void prakarProgrammer(void)
     cout << "uttar = " << dec << uttar;
     cout << " (" << bitset<8>(uttar) << ")";
     cout << " (0x" << hex << uttar << ")" << endl;
+    // uttar = 8 (00001000) (0x8)
 }
 
 void vartul(void);
@@ -250,7 +255,7 @@ void prakarVaignanik(void)
 // helper
 void suchana(void)
 {
-    cout << "aa calculator program mateni suchana\n";
+    cout << "aa calculator program mateni suchana" << endl;
     cout << "tamari rakam mate data-type nu chayan sahupratham karo\n";
     cout << "tamare sahu pratham be rakam apvani raheshe\n";
     cout << "pachhi prakriya chunto\n";
