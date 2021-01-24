@@ -24,6 +24,7 @@ int main(int argc, char* argv[])
     const int KUL_SANKHYA = 20;
     int gun[KUL_SANKHYA] = {99, 80, 70};
 
+    gun[14] = 90;
     gun[15] = 100;
     gun[18] = 35;
 
@@ -32,6 +33,13 @@ int main(int argc, char* argv[])
     {
         cout << "  " << kram + 1 << "    " << gun[kram] << endl;
     }
+
+    int* mara_gun = nullptr;
+    mara_gun = &gun[14];
+    *mara_gun = 92;
+    cout << "mara gun = addr:" << mara_gun
+            << " kimmat:" << *mara_gun
+            << " -- gun[14] = " << gun[14] << endl;
 
     // ant
 /*
