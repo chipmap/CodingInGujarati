@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstring>
 
 using namespace std;
 
@@ -37,9 +38,22 @@ int main(int argc, char* argv[])
     int* mara_gun = nullptr;
     mara_gun = &gun[14];
     *mara_gun = 92;
+    ++mara_gun;
     cout << "mara gun = addr:" << mara_gun
             << " kimmat:" << *mara_gun
             << " -- gun[14] = " << gun[14] << endl;
+
+    const int NAAM_AKSHAR = 16;
+    char* maru_naam = new char[NAAM_AKSHAR];
+    strcpy(maru_naam, "chirag");
+    cout << "naam = \'" << maru_naam << "\' (" << &maru_naam << ")" << endl;
+    delete[] maru_naam;
+
+    int* test = new int;
+    cout << "pahela test = " << test << " (" << &test << ")" << endl;
+    *test = 500;
+    cout << "pachhi test = " << *test << endl;
+    delete test;
 
     // ant
 /*
