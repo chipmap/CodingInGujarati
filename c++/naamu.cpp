@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <cstring>
 
 using namespace std;
@@ -18,21 +19,19 @@ struct Entry
 {
     // entry karti vela no samay
     unsigned short varsh;
-    unsigned char mahino;
-    unsigned char divas;
-    unsigned char kalak;
-    unsigned char minute;
-    unsigned char second;
+    unsigned short mahino;
+    unsigned short divas;
+    unsigned short kalak;
+    unsigned short minute;
+    unsigned short second;
     // kona mate aa levad-devad thai
-    //char naam[ENTRY_NAAM_KUL_AKSHAR];
-    string naam;
+    char naam[ENTRY_NAAM_KUL_AKSHAR];
     // rakam
     float rakam;
     // jama chhe ke udhar
     bool jamaa;// true - jamaa, false udhaar
     // entry mate nondh
-    //char nondh[ENTRY_NONDH_KUL_AKSHAR];
-    string nondh;
+    char nondh[ENTRY_NONDH_KUL_AKSHAR];
 };
 
 void sahaay(void);
@@ -89,18 +88,28 @@ void ekEntryNaakho(void)
 
     cout << "Levad devad thayeli rakam : ";
     cin >> ekEntry.rakam;
+
     cout << "Jamaa mate \'y\' ke \'Y\' athvaa udhaar ganaashe : ";
-    char jamaa;
+    string jamaa;
     cin >> jamaa;
-    if ((jamaa == 'y') || (jamaa = 'Y'))
+    if ((jamaa[0] == 'y') || (jamaa[0] == 'Y'))
         ekEntry.jamaa = ENTRY_JAMAA;
     else
         ekEntry.jamaa = ENTRY_UDHAAR;
 
-    cout << "Entry kona maate kari enu naam : ";
-    cin >> ekEntry.naam;
+    // upar cin ma string vapri chhe etle \n character emathi door
+    // karvo pade chhe.
+    cin.ignore();
+
+    cout << "Entry jena maate kari enu naam : ";
+    string naam;
+    getline(cin, naam);
+    strncpy(ekEntry.naam, naam.c_str(), ENTRY_NAAM_KUL_AKSHAR);
+
     cout << "Koi vishesh nondh? : ";
-    cin >> ekEntry.nondh;
+    string nondh;
+    getline(cin, nondh);
+    strncpy(ekEntry.nondh, nondh.c_str(), ENTRY_NONDH_KUL_AKSHAR);
 
     printEkEntry(ekEntry);
 }
@@ -109,12 +118,16 @@ void ekEntryNaakho(void)
 void printEkEntry(Entry ekEntry)
 {
     cout << "Me kareli entry --------------------" << endl;
-    cout << ekEntry.varsh << "/" << ekEntry.mahino << "/"
-        << ekEntry.divas << " "
-        << ekEntry.kalak << ":" << ekEntry.minute << ":"
-        << ekEntry.second
+    cout << ekEntry.varsh
+        << "/" << ekEntry.mahino
+        << "/" << ekEntry.divas
+        << " " << ekEntry.kalak
+        << ":" << ekEntry.minute
+        << ":" << ekEntry.second
         << " " << ekEntry.rakam
-        << " " << ((ekEntry.jamaa == ENTRY_JAMAA) ? "jamaa" : "udhaar")
-        << " " << ekEntry.naam << " " << ekEntry.nondh
+        << " " << ((ekEntry.jamaa == ENTRY_JAMAA) ? "+" : "-")
+        << " " << ekEntry.naam
+        << " " << ekEntry.nondh
         << endl;
+    cout << "------------------------------------" << endl;
 }
