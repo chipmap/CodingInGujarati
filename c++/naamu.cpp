@@ -13,6 +13,7 @@ const int ENTRY_NAAM_KUL_AKSHAR = 128;
 const int ENTRY_NONDH_KUL_AKSHAR = 128;
 const bool ENTRY_JAMAA = true;
 const bool ENTRY_UDHAAR = false;
+const int KUL_ENTRY = 500;
 
 // ek entry mate joiti mahiti
 struct Entry
@@ -20,19 +21,29 @@ struct Entry
     // entry karti vela no samay
     unsigned short varsh;
     unsigned short mahino;
+
     unsigned short divas;
     unsigned short kalak;
+
     unsigned short minute;
     unsigned short second;
+
     // kona mate aa levad-devad thai
     char naam[ENTRY_NAAM_KUL_AKSHAR];
+
     // rakam
     float rakam;
+
     // jama chhe ke udhar
     bool jamaa;// true - jamaa, false udhaar
+
     // entry mate nondh
     char nondh[ENTRY_NONDH_KUL_AKSHAR];
 };
+
+// mari aaj ni vadhu ma vadhu entry aavi shake
+Entry gMariEntry[KUL_ENTRY] = {0};
+int gEntryKram = 0;
 
 void sahaay(void);
 void entryNaakho(void);
@@ -72,6 +83,8 @@ void entryNaakho(void)
 void ekEntryNaakho(void)
 {
     Entry ekEntry;
+    memset(&ekEntry, 0, sizeof(ekEntry));
+    cout << "-- Entry na byte = " << sizeof(ekEntry) << endl;
 
     cout << "Entry maate nu varsh : ";
     cin >> ekEntry.varsh;
@@ -104,21 +117,26 @@ void ekEntryNaakho(void)
     cout << "Entry jena maate kari enu naam : ";
     string naam;
     getline(cin, naam);
-    strncpy(ekEntry.naam, naam.c_str(), ENTRY_NAAM_KUL_AKSHAR);
+    strncpy(ekEntry.naam, naam.c_str(), ENTRY_NAAM_KUL_AKSHAR - 1);
 
     cout << "Koi vishesh nondh? : ";
     string nondh;
     getline(cin, nondh);
-    strncpy(ekEntry.nondh, nondh.c_str(), ENTRY_NONDH_KUL_AKSHAR);
+    strncpy(ekEntry.nondh, nondh.c_str(), ENTRY_NONDH_KUL_AKSHAR - 1);
 
     printEkEntry(ekEntry);
+    memcpy(&gMariEntry[gEntryKram], &ekEntry, sizeof(ekEntry));
+    ++gEntryKram;
+    // ++gEntryKram ke gEntryKram++ ke gEntryKram = gEntryKRam + 1
+    // ke gEntryKram += 1 ===> aa badha no arth/parinam ek sarkhu hoy
 }
 
 // ek entry na printing maate
 void printEkEntry(Entry ekEntry)
 {
     cout << "Me kareli entry --------------------" << endl;
-    cout << ekEntry.varsh
+    cout << gEntryKram + 1
+        << " " << ekEntry.varsh
         << "/" << ekEntry.mahino
         << "/" << ekEntry.divas
         << " " << ekEntry.kalak
