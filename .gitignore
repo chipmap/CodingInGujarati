@@ -3,3 +3,5 @@
 *.exe
 .idea/
 out/
+/java/mavenproject1/mavenproject1/target/
+/java/mavenproject1/mavenproject1/client-web/target/
