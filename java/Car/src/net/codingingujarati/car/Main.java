@@ -2,18 +2,13 @@
 
 package net.codingingujarati.car;
 
-import javax.xml.validation.ValidatorHandler;
-
 public class Main {
 
     public static void main(String[] args) {
-        // પ્રારંભિક ઓબ્જેક્ટ/ઇન્સ્ટનસ
-        Vahan car = new Vahan();
-        car.Print();
-        // અમુક ડેટ સભ્યોને બદલો
+        // પબ્લિક કન્સ્ટ્રક્ટર વાપરો
+        Car car = new Car("બીએમડબ્લ્યુ",
+                "x૫");
         System.out.println("ગાડી દોડી...");
-        car.mBrand = "બીએમડબ્લ્યુ";
-        car.mModel = "x૫";
         car.Print();
     }
 }

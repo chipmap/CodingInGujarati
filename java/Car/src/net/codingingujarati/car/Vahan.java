@@ -8,16 +8,17 @@ package net.codingingujarati.car;
  * વાહન એ પેરન્ટ ક્લાસ છે.
  */
 public class Vahan {
-    public int mTyre;
-    public int mRang;
-    public int mFuel;
-    public String mBrand;
-    public String mModel;
+    private int mTyre;
+    private int mRang;
+    private int mFuel;
+    private String mBrand;
+    private String mModel;
 
     /**
      * ડિફોલ્ટ કન્સ્ટ્રક્ટર (constructor અથવા ctor)
+     * પ્રાઇવેટ - અંગત રહસ્ય
      */
-    public Vahan()
+    private Vahan()
     {
         mTyre = 4;
         mRang = 0;
@@ -27,7 +28,23 @@ public class Vahan {
     }
 
     /**
+     * પ્રોટેક્ટેડ - સંતાન માટેનું કન્સ્ટ્રક્ટર
+     * @param brand વાહનની બ્રાન્ડ
+     * @param model બ્રાન્ડનું મોડેલ
+     * @param tyre ટાયરની સંખ્યા
+     */
+    protected Vahan(String brand, String model, int tyre)
+    {
+        mBrand = brand;
+        mModel = model;
+        mTyre = tyre;
+        mRang = 0;
+        mFuel = 0;
+    }
+
+    /**
      * બધુ સ્ક્રીન દેખાડો..
+     * પબ્લિક - સર્વે માટે
      */
     public void Print()
     {
