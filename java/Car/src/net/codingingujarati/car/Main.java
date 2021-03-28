@@ -6,8 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
         // પબ્લિક કન્સ્ટ્રક્ટર વાપરો
-        Car car = new Car("બીએમડબ્લ્યુ",
-                "x૫");
+        BmwCar car = new BmwCar("x૫",
+                RangPrakar.ભૂરો,
+                Vahan.FuelPrakar.પેટ્રોલ);
         System.out.println("ગાડી દોડી...");
         car.Print();
     }

@@ -8,9 +8,26 @@ package net.codingingujarati.car;
  * વાહન એ પેરન્ટ ક્લાસ છે.
  */
 public class Vahan {
+    /**
+     * બળતણ કે ફ્યુલના પ્રકાર
+     */
+    public enum FuelPrakar
+    {
+        નક્કીનથી,
+        પેટ્રોલ,
+        ડીઝલ,
+        કેરોસીન,
+        જેટફયુલ,
+        નેચરલગેસ,
+        કોલસો,
+        ન્યુક્લિયર,
+        ઇલેક્ટ્રિક,
+        રોકેટેફયુલ
+    }
+
     private int mTyre;
-    private int mRang;
-    private int mFuel;
+    private RangPrakar mRang;
+    private FuelPrakar mFuel;
     private String mBrand;
     private String mModel;
 
@@ -21,8 +38,8 @@ public class Vahan {
     private Vahan()
     {
         mTyre = 4;
-        mRang = 0;
-        mFuel = 0;
+        mRang = RangPrakar.નક્કીનથી;
+        mFuel = FuelPrakar.નક્કીનથી;
         mBrand = "";
         mModel = "";
     }
@@ -32,14 +49,17 @@ public class Vahan {
      * @param brand વાહનની બ્રાન્ડ
      * @param model બ્રાન્ડનું મોડેલ
      * @param tyre ટાયરની સંખ્યા
+     * @param rang મોડેલનો રંગ
+     * @param fuel મોડેલનું બળતણ
      */
-    protected Vahan(String brand, String model, int tyre)
+    protected Vahan(String brand, String model, int tyre,
+                    RangPrakar rang, FuelPrakar fuel)
     {
         mBrand = brand;
         mModel = model;
         mTyre = tyre;
-        mRang = 0;
-        mFuel = 0;
+        mRang = rang;
+        mFuel = fuel;
     }
 
     /**
