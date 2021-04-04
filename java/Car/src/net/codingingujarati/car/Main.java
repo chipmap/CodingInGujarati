@@ -9,7 +9,19 @@ public class Main {
         BmwCar car = new BmwCar("x૫",
                 RangPrakar.ભૂરો,
                 Vahan.FuelPrakar.પેટ્રોલ);
-        System.out.println("ગાડી દોડી...");
+        System.out.println("ગાડી બનાવી...");
         car.Print();
+
+        Truck truck = new Truck("ટાટા",
+                "સુમો",
+                12,
+                RangPrakar.શ્યામ,
+                Vahan.FuelPrakar.ડીઝલ);
+        System.out.println("ટ્રક બનાવી...");
+        truck.Print();
+
+        // ગાડી અને ટ્રક ની સ્પર્ધા કરો
+        truck.Run();
+        car.Run();
     }
 }

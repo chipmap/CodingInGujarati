@@ -3,21 +3,20 @@
 package net.codingingujarati.car;
 
 /**
- * કાર પ્રકારનું વાહન
+ * ટ્રક પ્રકારનું વાહન
  */
-public class Car extends Vahan implements Dot {
+public class Truck extends Vahan implements Dot {
     /**
-     * વપરાશકર્તા માટેનું કન્સ્ટ્રક્ટર
+     * પ્રોટેક્ટેડ - સંતાન માટેનું કન્સ્ટ્રક્ટર
      *
      * @param brand વાહનની બ્રાન્ડ
      * @param model બ્રાન્ડનું મોડેલ
-     * @param rang મોડેલનો રંગ
-     * @param fuel મોડેલનું બળતણ
+     * @param tyre  ટાયરની સંખ્યા
+     * @param rang  મોડેલનો રંગ
+     * @param fuel  મોડેલનું બળતણ
      */
-    public Car(String brand, String model, RangPrakar rang, FuelPrakar fuel)
-    {
-        // સુપર વડે વાહનના મેથડ/ફંક્શન (અહી કન્સ્ટ્રક્ટર)
-        super(brand, model, 4, rang, fuel);
+    public Truck(String brand, String model, int tyre, RangPrakar rang, FuelPrakar fuel) {
+        super(brand, model, tyre, rang, fuel);
     }
 
     /**
@@ -26,7 +25,7 @@ public class Car extends Vahan implements Dot {
     @Override
     public void Run() {
         RegisterKaro();
-        System.out.println("મારી ગાડી દોડી..");
+        System.out.println("મારી ટ્રક દોડી..");
     }
 
     /**

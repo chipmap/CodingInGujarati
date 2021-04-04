@@ -7,7 +7,7 @@ package net.codingingujarati.car;
  *
  * વાહન એ પેરન્ટ ક્લાસ છે.
  */
-public class Vahan {
+public abstract class Vahan {
     /**
      * બળતણ કે ફ્યુલના પ્રકાર
      */
@@ -25,11 +25,11 @@ public class Vahan {
         રોકેટેફયુલ
     }
 
-    private int mTyre;
-    private RangPrakar mRang;
-    private FuelPrakar mFuel;
-    private String mBrand;
-    private String mModel;
+    protected int mTyre;
+    protected RangPrakar mRang;
+    protected FuelPrakar mFuel;
+    protected String mBrand;
+    protected String mModel;
 
     /**
      * ડિફોલ્ટ કન્સ્ટ્રક્ટર (constructor અથવા ctor)
@@ -74,4 +74,9 @@ public class Vahan {
         System.out.println("brand = " + mBrand);
         System.out.println("model = " + mModel);
     }
+
+    /**
+     * વાહન પ્રમાણે ચલાવવાની પ્રક્રિયા
+     */
+    abstract public void Run();
 }
