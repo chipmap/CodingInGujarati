@@ -22,6 +22,12 @@ public class Main {
 
         // ગાડી અને ટ્રક ની સ્પર્ધા કરો
         truck.Run();
+        truck.OdometerMaUmero(20.5);
+        truck.Print();
+
         car.Run();
+        car.OdometerMaUmero(101);
+        car.OdometerMaUmero(25);
+        car.Print();
     }
 }
