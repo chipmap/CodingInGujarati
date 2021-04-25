@@ -8,6 +8,25 @@ package net.codingingujarati.car;
  * વાહન એ પેરન્ટ ક્લાસ છે.
  */
 public abstract class Vahan {
+
+    /**
+     * વાહનના પ્રકાર
+     */
+    public enum VahanPrakar
+    {
+        નક્કીનથી,
+        ગાડી,
+        ટ્રક,
+        બસ,
+        બાઇક,
+        સાઇકલ,
+        રોકેટ,
+        વિમાન,
+        ટ્રેન,
+        ટ્રામ,
+        મેટ્રોટ્રેન
+    }
+
     /**
      * બળતણ કે ફ્યુલના પ્રકાર
      */
@@ -25,13 +44,14 @@ public abstract class Vahan {
         રોકેટેફયુલ
     }
 
-    final protected int START_YEAR = 2021;
+    final public int START_YEAR = 2021;
 
     protected int mTyre;
     protected RangPrakar mRang;
     protected FuelPrakar mFuel;
     protected String mBrand;
     protected String mModel;
+    protected VahanPrakar mPrakar;
 
     volatile protected double mOdometer;
 
@@ -41,6 +61,7 @@ public abstract class Vahan {
      */
     private Vahan()
     {
+        mPrakar = VahanPrakar.નક્કીનથી;
         mOdometer = 0;
         mTyre = 4;
         mRang = RangPrakar.નક્કીનથી;
@@ -57,9 +78,10 @@ public abstract class Vahan {
      * @param rang મોડેલનો રંગ
      * @param fuel મોડેલનું બળતણ
      */
-    protected Vahan(String brand, String model, int tyre,
+    protected Vahan(VahanPrakar prakar, String brand, String model, int tyre,
                     RangPrakar rang, FuelPrakar fuel)
     {
+        mPrakar = prakar;
         mBrand = brand;
         mModel = model;
         mTyre = tyre;
@@ -74,13 +96,16 @@ public abstract class Vahan {
      */
     public void Print()
     {
-        System.out.println("sharuat nu varsh = " + START_YEAR);
-        System.out.println("brand = " + mBrand);
-        System.out.println("model = " + mModel);
-        System.out.println("rang = " + mRang);
-        System.out.println("tyre = " + mTyre);
-        System.out.println("fuel = " + mFuel);
-        System.out.println("odometer = " + OdometerReading());
+        System.out.println("--------------------->>");
+        System.out.println("પ્રકાર = " + mPrakar);
+        System.out.println("પ્રથમ વર્ષ = " + START_YEAR);
+        System.out.println("બ્રાન્ડ = " + mBrand);
+        System.out.println("મોડેલ = " + mModel);
+        System.out.println("રંગ = " + mRang);
+        System.out.println("ટાયર = " + mTyre);
+        System.out.println("બળતણ = " + mFuel);
+        System.out.println("ઓડોમીટર = " + OdometerReading() + " કિલોમીટર");
+        System.out.println("<<---------------------");
     }
 
     /**

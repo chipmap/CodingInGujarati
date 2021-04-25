@@ -4,30 +4,77 @@ package net.codingingujarati.car;
 
 public class Main {
 
+    public final static int MAX_VAHANO = 100;
+
+    private int mTracker = 0;
+    private Vahan[] mVahanSamooh = new Vahan[MAX_VAHANO];
+
     public static void main(String[] args) {
-        // પબ્લિક કન્સ્ટ્રક્ટર વાપરો
-        BmwCar car = new BmwCar("x૫",
-                RangPrakar.ભૂરો,
-                Vahan.FuelPrakar.પેટ્રોલ);
-        System.out.println("ગાડી બનાવી...");
-        car.Print();
+        Main main = new Main();
+        main.NavuVaahanUmero(Vahan.VahanPrakar.ગાડી, "બીએમડબ્લ્યુ", "x૫",
+                0, RangPrakar.ભૂરો, Vahan.FuelPrakar.પેટ્રોલ);
+        main.NavuVaahanUmero(Vahan.VahanPrakar.ટ્રક, "ટાટા", "સુમો",
+                12, RangPrakar.શ્યામ, Vahan.FuelPrakar.ડીઝલ);
 
-        Truck truck = new Truck("ટાટા",
-                "સુમો",
-                12,
-                RangPrakar.શ્યામ,
-                Vahan.FuelPrakar.ડીઝલ);
-        System.out.println("ટ્રક બનાવી...");
-        truck.Print();
+        main.VahanSuchiPrintKaro();
 
-        // ગાડી અને ટ્રક ની સ્પર્ધા કરો
+
+        /* ગાડી અને ટ્રક ની સ્પર્ધા કરો
         truck.Run();
-        truck.OdometerMaUmero(20.5);
+
+        // વપરાશકર્તા પાસેથી અંતર લો..
+        System.out.println("ટ્રક કેટલા કિલોમીટર દોડી એ જણાવો: ");
+        Scanner maruScanner = new Scanner(System.in);
+        double marakm = maruScanner.nextDouble();
+
+        truck.OdometerMaUmero(marakm);
         truck.Print();
 
         car.Run();
-        car.OdometerMaUmero(101);
-        car.OdometerMaUmero(25);
+        car.OdometerMaUmero(100);
+
+        System.out.println("કાર કેટલા કિલોમીટર દોડી એ જણાવો: ");
+        marakm = maruScanner.nextDouble();
+        car.OdometerMaUmero(marakm);
+
         car.Print();
+         */
+    }
+
+    private void NavuVaahanUmero(Vahan.VahanPrakar prakar, String brand, String model, int tyre,
+                                 RangPrakar rang, Vahan.FuelPrakar fuel)
+    {
+        Vahan navuVahan = null;
+
+        if (mTracker < (MAX_VAHANO - 1)) {
+            switch (prakar) {
+                case ગાડી:
+                    navuVahan = new Car(brand, model, rang, fuel);
+                    break;
+
+                case ટ્રક:
+                    navuVahan = new Truck(brand, model, tyre, rang, fuel);
+                    break;
+
+                default:
+                    System.out.println("આ પ્રકારનું વાહન હજુ અમે બનાવતા નથી.. " + prakar);
+            }
+
+            if (navuVahan != null) {
+                mVahanSamooh[mTracker] = navuVahan;
+                ++mTracker;
+                System.out.println("[" + mTracker + "] " + navuVahan.mPrakar + " બનાવી...");
+            }
+        } else {
+            System.out.println("કુલ વાહન સંખ્યા સમાપ્ત થઈ છે .. " + MAX_VAHANO);
+        }
+
+    }
+
+    private void VahanSuchiPrintKaro()
+    {
+        for (int idx = 0; idx < mTracker; ++idx) {
+            mVahanSamooh[idx].Print();
+        }
     }
 }

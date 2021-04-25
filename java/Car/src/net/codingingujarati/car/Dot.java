@@ -5,7 +5,8 @@ package net.codingingujarati.car;
 /**
  * dotનો ઈન્ટરફેસ
  */
-public interface Dot {
+public interface Dot
+{
     /**
      * જે-તે વાહનને dotમાં રજીસ્ટર કરો
      */

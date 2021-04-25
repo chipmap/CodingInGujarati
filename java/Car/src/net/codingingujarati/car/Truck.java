@@ -16,7 +16,7 @@ public class Truck extends Vahan implements Dot {
      * @param fuel  મોડેલનું બળતણ
      */
     public Truck(String brand, String model, int tyre, RangPrakar rang, FuelPrakar fuel) {
-        super(brand, model, tyre, rang, fuel);
+        super(VahanPrakar.ટ્રક, brand, model, tyre, rang, fuel);
     }
 
     /**
