@@ -15,6 +15,8 @@ public class Main {
                 0, RangPrakar.ભૂરો, Vahan.FuelPrakar.પેટ્રોલ);
         main.NavuVaahanUmero(Vahan.VahanPrakar.ટ્રક, "ટાટા", "સુમો",
                 12, RangPrakar.શ્યામ, Vahan.FuelPrakar.ડીઝલ);
+        main.NavuVaahanUmero(Vahan.VahanPrakar.બસ, "વોલ્વો", "લકઝરી",
+                12, RangPrakar.કેસરી, Vahan.FuelPrakar.ડીઝલ);
 
         main.VahanSuchiPrintKaro();
 
@@ -46,13 +48,14 @@ public class Main {
     {
         Vahan navuVahan = null;
 
-        if (mTracker < (MAX_VAHANO - 1)) {
+        //if (mTracker < MAX_VAHANO) {
             switch (prakar) {
                 case ગાડી:
                     navuVahan = new Car(brand, model, rang, fuel);
                     break;
 
                 case ટ્રક:
+                case બસ:
                     navuVahan = new Truck(brand, model, tyre, rang, fuel);
                     break;
 
@@ -65,9 +68,9 @@ public class Main {
                 ++mTracker;
                 System.out.println("[" + mTracker + "] " + navuVahan.mPrakar + " બનાવી...");
             }
-        } else {
-            System.out.println("કુલ વાહન સંખ્યા સમાપ્ત થઈ છે .. " + MAX_VAHANO);
-        }
+        //} else {
+        //    System.out.println("કુલ વાહન સંખ્યા સમાપ્ત થઈ છે .. " + MAX_VAHANO);
+        //}
 
     }
 
