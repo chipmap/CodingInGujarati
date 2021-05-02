@@ -2,12 +2,11 @@
 
 package net.codingingujarati.car;
 
+import java.util.ArrayList;
+
 public class Main {
 
-    public final static int MAX_VAHANO = 100;
-
-    private int mTracker = 0;
-    private Vahan[] mVahanSamooh = new Vahan[MAX_VAHANO];
+    private ArrayList<Vahan> mVahanSuchi = new ArrayList<>();
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -44,40 +43,25 @@ public class Main {
     }
 
     private void NavuVaahanUmero(Vahan.VahanPrakar prakar, String brand, String model, int tyre,
-                                 RangPrakar rang, Vahan.FuelPrakar fuel)
-    {
-        Vahan navuVahan = null;
+                                 RangPrakar rang, Vahan.FuelPrakar fuel) {
+        switch (prakar) {
+            case ગાડી:
+                mVahanSuchi.add(new Car(brand, model, rang, fuel));
+                break;
 
-        //if (mTracker < MAX_VAHANO) {
-            switch (prakar) {
-                case ગાડી:
-                    navuVahan = new Car(brand, model, rang, fuel);
-                    break;
+            case ટ્રક:
+            case બસ:
+                mVahanSuchi.add(new Truck(brand, model, tyre, rang, fuel));
+                break;
 
-                case ટ્રક:
-                case બસ:
-                    navuVahan = new Truck(brand, model, tyre, rang, fuel);
-                    break;
-
-                default:
-                    System.out.println("આ પ્રકારનું વાહન હજુ અમે બનાવતા નથી.. " + prakar);
-            }
-
-            if (navuVahan != null) {
-                mVahanSamooh[mTracker] = navuVahan;
-                ++mTracker;
-                System.out.println("[" + mTracker + "] " + navuVahan.mPrakar + " બનાવી...");
-            }
-        //} else {
-        //    System.out.println("કુલ વાહન સંખ્યા સમાપ્ત થઈ છે .. " + MAX_VAHANO);
-        //}
-
+            default:
+                System.out.println("આ પ્રકારનું વાહન હજુ અમે બનાવતા નથી.. " + prakar);
+        }
     }
 
-    private void VahanSuchiPrintKaro()
-    {
-        for (int idx = 0; idx < mTracker; ++idx) {
-            mVahanSamooh[idx].Print();
+    private void VahanSuchiPrintKaro() {
+        for (Vahan vahan : mVahanSuchi) {
+            vahan.Print();
         }
     }
 }
