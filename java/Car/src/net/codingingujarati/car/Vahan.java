@@ -97,14 +97,14 @@ public abstract class Vahan {
     public void Print()
     {
         System.out.println("--------------------->>");
-        System.out.println("પ્રકાર = " + mPrakar);
-        System.out.println("પ્રથમ વર્ષ = " + START_YEAR);
-        System.out.println("બ્રાન્ડ = " + mBrand);
-        System.out.println("મોડેલ = " + mModel);
-        System.out.println("રંગ = " + mRang);
-        System.out.println("ટાયર = " + mTyre);
-        System.out.println("બળતણ = " + mFuel);
-        System.out.println("ઓડોમીટર = " + OdometerReading() + " કિલોમીટર");
+        System.out.println("પ્રકાર = " + mPrakar
+                + " :: પ્રથમ વર્ષ = " + START_YEAR
+                + " :: " + mBrand
+                + " " + mModel
+                + " " + mRang
+                + " :: ટાયર = " + mTyre
+                + " " + mFuel
+                + " :: ઓડોમીટર = " + OdometerReading() + " કિલોમીટર");
         System.out.println("<<---------------------");
     }
 

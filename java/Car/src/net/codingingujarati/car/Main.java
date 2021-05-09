@@ -12,34 +12,25 @@ public class Main {
         Main main = new Main();
         main.NavuVaahanUmero(Vahan.VahanPrakar.ગાડી, "બીએમડબ્લ્યુ", "x૫",
                 0, RangPrakar.ભૂરો, Vahan.FuelPrakar.પેટ્રોલ);
-        main.NavuVaahanUmero(Vahan.VahanPrakar.ટ્રક, "ટાટા", "સુમો",
+        main.NavuVaahanUmero(Vahan.VahanPrakar.ટ્રક, "ટાટા", "ગોલ્ડ",
                 12, RangPrakar.શ્યામ, Vahan.FuelPrakar.ડીઝલ);
         main.NavuVaahanUmero(Vahan.VahanPrakar.બસ, "વોલ્વો", "લકઝરી",
                 12, RangPrakar.કેસરી, Vahan.FuelPrakar.ડીઝલ);
 
         main.VahanSuchiPrintKaro();
 
+        System.out.println("હવે આપણે વાહન દોડાવીએ... ");
 
-        /* ગાડી અને ટ્રક ની સ્પર્ધા કરો
-        truck.Run();
+        Vahan vahan = main.mVahanSuchi.get(0);
+        vahan.OdometerMaUmero(300); // bmw
 
-        // વપરાશકર્તા પાસેથી અંતર લો..
-        System.out.println("ટ્રક કેટલા કિલોમીટર દોડી એ જણાવો: ");
-        Scanner maruScanner = new Scanner(System.in);
-        double marakm = maruScanner.nextDouble();
+        vahan = main.mVahanSuchi.get(1);
+        vahan.OdometerMaUmero(12000); // tata
 
-        truck.OdometerMaUmero(marakm);
-        truck.Print();
+        vahan = main.mVahanSuchi.get(2);
+        vahan.OdometerMaUmero(45200.47); // volvo
 
-        car.Run();
-        car.OdometerMaUmero(100);
-
-        System.out.println("કાર કેટલા કિલોમીટર દોડી એ જણાવો: ");
-        marakm = maruScanner.nextDouble();
-        car.OdometerMaUmero(marakm);
-
-        car.Print();
-         */
+        main.VahanSuchiPrintKaro();
     }
 
     private void NavuVaahanUmero(Vahan.VahanPrakar prakar, String brand, String model, int tyre,
