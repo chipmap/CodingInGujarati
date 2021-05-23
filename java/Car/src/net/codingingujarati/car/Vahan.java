@@ -2,12 +2,14 @@
 
 package net.codingingujarati.car;
 
+import java.io.Serializable;
+
 /**
  * જાવાડોક (javadoc) પ્રકારની કોમેન્ટનું ઉદાહરણ
  *
  * વાહન એ પેરન્ટ ક્લાસ છે.
  */
-public abstract class Vahan {
+public abstract class Vahan implements Serializable {
 
     /**
      * વાહનના પ્રકાર
@@ -54,6 +56,7 @@ public abstract class Vahan {
     protected VahanPrakar mPrakar;
 
     volatile protected double mOdometer;
+    volatile protected transient double mTripDistance;
 
     /**
      * ડિફોલ્ટ કન્સ્ટ્રક્ટર (constructor અથવા ctor)
@@ -68,6 +71,7 @@ public abstract class Vahan {
         mFuel = FuelPrakar.નક્કીનથી;
         mBrand = "";
         mModel = "";
+        mTripDistance = 0;
     }
 
     /**
@@ -88,6 +92,7 @@ public abstract class Vahan {
         mRang = rang;
         mFuel = fuel;
         mOdometer = 0;
+        mTripDistance = 0;
     }
 
     /**
@@ -104,7 +109,8 @@ public abstract class Vahan {
                 + " " + mRang
                 + " :: ટાયર = " + mTyre
                 + " " + mFuel
-                + " :: ઓડોમીટર = " + OdometerReading() + " કિલોમીટર");
+                + " :: પ્રવાસ = " + TripAntar() + " કિલોમીટર"
+                + " ઓડોમીટર = " + OdometerReading() + " કિલોમીટર" );
         System.out.println("<<---------------------");
     }
 
@@ -119,6 +125,7 @@ public abstract class Vahan {
      */
     public synchronized void OdometerMaUmero(double navaKm)
     {
+        mTripDistance = navaKm;
         mOdometer += navaKm;
         //mOdometer = mOdometer + navaKm;
     }
@@ -131,4 +138,10 @@ public abstract class Vahan {
     {
         return mOdometer;
     }
+
+    /**
+     * પ્રવાસના કિલોમીટર
+     * @return
+     */
+    public synchronized double TripAntar() { return mTripDistance; }
 }
