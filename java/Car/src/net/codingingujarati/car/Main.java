@@ -79,6 +79,8 @@ public class Main {
      */
     private void Deserialize() {
         boolean navaVahanBanavo = true;
+        FileInputStream fileIn = null;
+        ObjectInputStream objectIn = null;
 
         try {
             File file = new File(FILE_NAAM);
@@ -87,21 +89,29 @@ public class Main {
             } else {
                 System.out.println("ફાઇલ મળી : " + file.getAbsolutePath());
                 // ફાઇલ વાંચો અને એમાંથી વાહનો જે પહેલેથી બનાવ્યા છે એને ફરી બનાવો
-                FileInputStream fileIn = new FileInputStream(file);
-                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+                fileIn = new FileInputStream(file);
+                objectIn = new ObjectInputStream(fileIn);
 
                 mVahanSuchi = (ArrayList<Vahan>)objectIn.readObject();
                 System.out.println("કુલ " + mVahanSuchi.size() + " વાહનો ફાઇલમાંથી મળ્યાં");
                 navaVahanBanavo = (mVahanSuchi.size() == 0);
-
-                objectIn.close();
-                fileIn.close();
             }
         } catch (Exception ex) {
             System.out.println("ફાઇલ વાંચવામાં એકસેપ્શન : " + FILE_NAAM + "\n" + ex);
+            ex.printStackTrace();
+        } finally {
+            System.out.println("ફાઇલ બંધ કરીશું : " + FILE_NAAM + "\n");
+
+            try {
+                if (objectIn != null) objectIn.close();
+                if (fileIn != null) fileIn.close();
+            } catch (Exception ex) {
+                System.out.println("ફાઇલ બંધ કરવામાં એકસેપ્શન : " + FILE_NAAM + "\n" + ex);
+                ex.printStackTrace();
+            }
         }
 
-        if (navaVahanBanavo == true) {
+        if (navaVahanBanavo) {
             // ફાઇલમાં કોઈ ત્રુટિ હોવાથી, નવા વાહનો બનાવો
             NavuVaahanUmero(Vahan.VahanPrakar.ગાડી, "બીએમડબ્લ્યુ", "x૫",
                     0, RangPrakar.ભૂરો, Vahan.FuelPrakar.પેટ્રોલ);
