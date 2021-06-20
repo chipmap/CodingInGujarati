@@ -23,8 +23,7 @@ public class Truck extends Vahan implements Dot {
      * વાહન પ્રમાણે ચલાવવાની પ્રક્રિયા
      */
     @Override
-    public void Run() {
-        RegisterKaro();
+    public void RunImpl() {
         System.out.println("મારી ટ્રક દોડી..");
     }
 

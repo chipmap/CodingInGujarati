@@ -15,20 +15,21 @@ public class Main {
         main.Deserialize();
 
         main.VahanSuchiPrintKaro();
+        main.VahanDodavo();
 
-        System.out.println("હવે આપણે વાહન દોડાવીએ... ");
+        for (int idx = 0; idx < 5; ++idx) {
+            Vahan vahan = main.mVahanSuchi.get(0);
+            vahan.OdometerMaUmero(700); // bmw
 
-        Vahan vahan = main.mVahanSuchi.get(0);
-        vahan.OdometerMaUmero(700); // bmw
+            vahan = main.mVahanSuchi.get(1);
+            vahan.OdometerMaUmero(450); // tata
 
-        vahan = main.mVahanSuchi.get(1);
-        vahan.OdometerMaUmero(450); // tata
+            vahan = main.mVahanSuchi.get(2);
+            vahan.OdometerMaUmero(400.47); // volvo
+        }
 
-        vahan = main.mVahanSuchi.get(2);
-        vahan.OdometerMaUmero(400.47); // volvo
-
+        main.VahanThobhavo();
         main.Serialize();
-
         main.VahanSuchiPrintKaro();
     }
 
@@ -52,6 +53,20 @@ public class Main {
     private void VahanSuchiPrintKaro() {
         for (Vahan vahan : mVahanSuchi) {
             vahan.Print();
+        }
+    }
+
+    private void VahanDodavo() {
+        System.out.println("હવે આપણે વાહન દોડાવીએ... ");
+        for (Vahan vahan : mVahanSuchi) {
+            vahan.start();
+        }
+    }
+
+    private void VahanThobhavo() {
+        System.out.println("હવે આપણે વાહન થોભવીએ... ");
+        for (Vahan vahan : mVahanSuchi) {
+            vahan.Stop();
         }
     }
 

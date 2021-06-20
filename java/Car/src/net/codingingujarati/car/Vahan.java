@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * વાહન એ પેરન્ટ ક્લાસ છે.
  */
-public abstract class Vahan implements Serializable {
+public abstract class Vahan extends Thread implements Serializable {
 
     /**
      * વાહનના પ્રકાર
@@ -54,6 +54,7 @@ public abstract class Vahan implements Serializable {
     protected String mBrand;
     protected String mModel;
     protected VahanPrakar mPrakar;
+    protected boolean mRunning;
 
     volatile protected double mOdometer;
     volatile protected transient double mTripDistance;
@@ -72,6 +73,7 @@ public abstract class Vahan implements Serializable {
         mBrand = "";
         mModel = "";
         mTripDistance = 0;
+        mRunning = false;
     }
 
     /**
@@ -117,7 +119,30 @@ public abstract class Vahan implements Serializable {
     /**
      * વાહન પ્રમાણે ચલાવવાની પ્રક્રિયા
      */
-    abstract public void Run();
+    abstract public void RunImpl();
+    abstract public void RegisterKaro();
+
+    public void run()
+    {
+        System.out.println("મારો થ્રેડ = " + getId() + " પ્રાથમિકતા = " + getPriority());
+        RegisterKaro();
+        mRunning = true;
+
+        while (mRunning)
+        {
+            RunImpl();
+            try {
+                sleep(500);
+            } catch (Exception ex) {
+                System.out.println("મારી નિદ્રાનો ભંગ થયો!!!");
+            }
+        }
+    }
+
+    public void Stop()
+    {
+        mRunning = false;
+    }
 
     /**
      * નવા કિલોમીટર ઉમેરો
