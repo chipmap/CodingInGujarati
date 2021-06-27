@@ -61,12 +61,24 @@ public class Main {
         for (Vahan vahan : mVahanSuchi) {
             vahan.start();
         }
+
+        try {
+            Thread.sleep(2000);
+        } catch (Exception ex) {
+
+        }
     }
 
     private void VahanThobhavo() {
         System.out.println("હવે આપણે વાહન થોભવીએ... ");
         for (Vahan vahan : mVahanSuchi) {
             vahan.Stop();
+        }
+
+        try {
+            Thread.sleep(2000);
+        } catch (Exception ex) {
+
         }
     }
 

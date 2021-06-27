@@ -116,6 +116,11 @@ public abstract class Vahan extends Thread implements Serializable {
         System.out.println("<<---------------------");
     }
 
+    public String ShortPrint()
+    {
+        return mPrakar + ":" + mBrand + ":" + mModel;
+    }
+
     /**
      * વાહન પ્રમાણે ચલાવવાની પ્રક્રિયા
      */
@@ -124,7 +129,7 @@ public abstract class Vahan extends Thread implements Serializable {
 
     public void run()
     {
-        System.out.println("મારો થ્રેડ = " + getId() + " પ્રાથમિકતા = " + getPriority());
+        System.out.println(ShortPrint() + " થ્રેડ = " + getId() + " પ્રાથમિકતા = " + getPriority());
         RegisterKaro();
         mRunning = true;
 
@@ -132,11 +137,12 @@ public abstract class Vahan extends Thread implements Serializable {
         {
             RunImpl();
             try {
-                sleep(500);
+                sleep(100);
             } catch (Exception ex) {
-                System.out.println("મારી નિદ્રાનો ભંગ થયો!!!");
+                System.out.println(ShortPrint() + " નિદ્રાનો ભંગ થયો!!!");
             }
         }
+        System.out.println(ShortPrint() + " થ્રેડ = " + getId() + " હવે બંધ થાય છે..");
     }
 
     public void Stop()

@@ -25,14 +25,15 @@ public class Car extends Vahan implements Dot {
      */
     @Override
     public void RunImpl() {
-        System.out.println("મારી ગાડી દોડી..");
+        System.out.println(ShortPrint() + " દોડી.. " + mOdometer + " કિલોમીટર");
     }
 
     /**
      * જે-તે વાહનને dotમાં રજીસ્ટર કરો
      */
     @Override
-    public void RegisterKaro() {
-        System.out.println(mBrand + ":" + mModel + "નું રજીસ્ટ્રેશન થઈ ગયું..");
+    public void RegisterKaro()
+    {
+        System.out.println(ShortPrint() + "નું રજીસ્ટ્રેશન થઈ ગયું..");
     }
 }
