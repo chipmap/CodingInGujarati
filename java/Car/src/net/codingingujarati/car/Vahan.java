@@ -3,6 +3,7 @@
 package net.codingingujarati.car;
 
 import java.io.Serializable;
+import java.util.concurrent.Semaphore;
 
 /**
  * જાવાડોક (javadoc) પ્રકારની કોમેન્ટનું ઉદાહરણ
@@ -56,6 +57,9 @@ public abstract class Vahan extends Thread implements Serializable {
     protected VahanPrakar mPrakar;
     protected boolean mRunning;
 
+    protected Semaphore mSemaphore;
+    protected final Object mLock;
+
     volatile protected double mOdometer;
     volatile protected transient double mTripDistance;
 
@@ -74,6 +78,8 @@ public abstract class Vahan extends Thread implements Serializable {
         mModel = "";
         mTripDistance = 0;
         mRunning = false;
+        mLock = new Object();
+        mSemaphore = new Semaphore(1, true);
     }
 
     /**
@@ -95,6 +101,8 @@ public abstract class Vahan extends Thread implements Serializable {
         mFuel = fuel;
         mOdometer = 0;
         mTripDistance = 0;
+        mLock = new Object();
+        mSemaphore = new Semaphore(1, true);
     }
 
     /**
@@ -131,9 +139,14 @@ public abstract class Vahan extends Thread implements Serializable {
     {
         System.out.println(ShortPrint() + " થ્રેડ = " + getId() + " પ્રાથમિકતા = " + getPriority());
         RegisterKaro();
-        mRunning = true;
 
-        while (mRunning)
+        boolean run = true;
+        synchronized (mLock) {
+            mRunning = true;
+            run = mRunning;
+        }
+
+        while (run)
         {
             RunImpl();
             try {
@@ -141,13 +154,20 @@ public abstract class Vahan extends Thread implements Serializable {
             } catch (Exception ex) {
                 System.out.println(ShortPrint() + " નિદ્રાનો ભંગ થયો!!!");
             }
+
+            synchronized (mLock) {
+                run = mRunning;
+            }
         }
+
         System.out.println(ShortPrint() + " થ્રેડ = " + getId() + " હવે બંધ થાય છે..");
     }
 
     public void Stop()
     {
-        mRunning = false;
+        synchronized (mLock) {
+            mRunning = false;
+        }
     }
 
     /**
