@@ -5,6 +5,8 @@
 
 વ્હોટ્સ એપ ગ્રુપ: https://chat.whatsapp.com/CakOglLi93J8aZ5RUEyHUa
 
+વેબસાઇટ: http://rutmandal.info 
+
 
 c++/java/php/javascript વગેરે શીખો - નિશુલ્ક
 
