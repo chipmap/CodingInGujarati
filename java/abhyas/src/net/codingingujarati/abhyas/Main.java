@@ -14,7 +14,30 @@ public class Main {
         Main my = new Main();
         //my.abhyas1(12);
         //my.abhyas2(14);
-        my.abhyas3(in.nextLine());
+        //my.abhyas3(in.nextLine());
+        my.abhyas4(in.nextLine());
+    }
+
+    /*
+    કોઈ પણ સ્ટ્રિંગને અવળી કરીને લખો અને એમાં ઇંગ્લિશ અક્ષર હોય તો એ બધાં અપર કેસમાં લખો.
+    જેમ કે, "ચિરાગ" -> "ગરાચિ", "૧૨૩૪" -> "૪૩૨૧", "12aBc" -> "CBA21"
+     */
+    String abhyas4(String shabd)
+    {
+        int length = shabd.length();
+        String parinam = "";
+
+        for (int idx = 0; idx < length; ++idx) {
+            char akshar = shabd.charAt(length - 1 - idx);
+            if ((akshar >= 'a') && (akshar <= 'z')) {
+                akshar = (char)((int)akshar - 'a' + 'A');
+            }
+
+            parinam += akshar;
+        }
+
+        System.out.println("અવળા ક્રમમા : " + parinam);
+        return parinam;
     }
 
     /*
