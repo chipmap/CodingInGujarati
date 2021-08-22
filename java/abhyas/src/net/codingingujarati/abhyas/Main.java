@@ -10,12 +10,44 @@ public class Main {
     public static void main(String[] args) {
 	    Scanner in = new Scanner(System.in);
 
-	    System.out.println("એક સંખ્યા કે શબ્દ આપો: ");
+	    System.out.println("સંખ્યા કે શબ્દ આપો: ");
         Main my = new Main();
         //my.abhyas1(12);
         //my.abhyas2(14);
         //my.abhyas3(in.nextLine());
-        my.abhyas4(in.nextLine());
+        //my.abhyas4(in.nextLine());
+        my.abhyas5(in.nextLine());
+    }
+
+    /*
+    ૧, ૫, ૧૧, ૧૪, ૭, ૮, ૧૨, ૧૩, ૧૯, ૨૦, ૨૬, ૧૬ - આમાંથી સહુથી મોટી સંખ્યા અને સહુથી નાની સંખ્યા શોધો.
+    બધાની સરેરાશ કાઢો.
+    */
+    void abhyas5(String ankSuchiStr)
+    {
+        String[] ankSuchi = ankSuchiStr.split(",");
+        int nano = Integer.parseInt(ankSuchi[0]);
+        int moto = nano;
+        int sarerash = 0;
+
+        for (String ankStr : ankSuchi)
+        {
+            int ank = Integer.parseInt(ankStr);
+
+            if (ank < nano) {
+                nano = ank;
+            }
+
+            if (ank > moto) {
+                moto = ank;
+            }
+
+            sarerash += ank;
+        }
+
+        sarerash = sarerash / ankSuchi.length;
+
+        System.out.println("મોટી સંખ્યા: " + moto + " નાની સંખ્યા: " + nano + " સરેરાશ: " + sarerash);
     }
 
     /*
