@@ -6,6 +6,13 @@ import (
 	"strings"
 )
 
+// calculator mate upyogi samooh
+type Samooh struct {
+	sankhya1 float32
+	sankhya2 float32
+	parinam  float32
+}
+
 // આ વપરાશકર્તાને સહાયક થાય એ માટેનું ફંક્શન છે
 func sahaay() {
 	fmt.Println("નમસ્તે! કેલ્ક્યુલેટર કાર્યક્રમમાં આપનું સ્વાગત છે!")
@@ -13,26 +20,22 @@ func sahaay() {
 	fmt.Println("કાર્યક્રમ બંધ કરવા q/Q નું ચયન કરો")
 }
 
-func beSankhyaLo(pr *float32, bi *float32) {
+func beSankhyaLo(s *Samooh) {
 	fmt.Print("પ્રથમ સંખ્યા લખો : ")
-	fmt.Scan(pr)
+	fmt.Scan(&(s.sankhya1))
 	fmt.Print("બીજી સંખ્યા લખો : ")
-	fmt.Scan(bi)
+	fmt.Scan(&(s.sankhya2))
 }
 
-func sarvalo(pr *float32, bi *float32) {
-	var parinam float32
-	parinam = *pr + *bi
-
-	fmt.Printf("%.2f + %.2f = %.2f\n", *pr, *bi, parinam)
+func sarvalo(s *Samooh) {
+	s.parinam = s.sankhya1 + s.sankhya2
 }
 
 func main() {
 	sahaay()
 
 	var nikalo bool = false
-	var pratham float32
-	var biji float32
+	samooh := Samooh{sankhya1: 0, sankhya2: 0, parinam: 0}
 
 	for nikalo != true {
 		var vikalp string
@@ -47,8 +50,8 @@ func main() {
 			nikalo = true
 
 		case "+":
-			beSankhyaLo(&pratham, &biji)
-			sarvalo(&pratham, &biji)
+			beSankhyaLo(&samooh)
+			sarvalo(&samooh)
 
 		/*case "-":
 			baadbaki()
@@ -69,7 +72,10 @@ func main() {
 			fmt.Printf("ચયન કરેલો વિકલ્પ \"%s\" અજાણ્યો છે.\n", vikalp)
 		}
 
-		fmt.Print("નવા વિકલ્પનું ચયન કરો : ")
+		if strings.Compare(vikalp, "q") != 0 {
+			fmt.Printf("%.2f %s %.2f = %.2f\n", samooh.sankhya1, vikalp, samooh.sankhya2, samooh.parinam)
+		}
+		fmt.Print("\nનવા વિકલ્પનું ચયન કરો : ")
 	}
 
 	fmt.Println("કાર્યક્રમ કેવો રહ્યો એ અંગે પ્રતિભાવ આપશો! ધન્યવાદ!")
