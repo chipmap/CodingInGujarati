@@ -31,6 +31,12 @@ func sarvalo(s *Samooh) {
 	s.parinam = s.sankhya1 + s.sankhya2
 }
 
+func test(s1 float32, s2 float32) (float32, float32, float32, float32) {
+	s1 += 10
+	s2 += 1
+	return s1 + s2, s1 - s2, s1 * s2, s1 / s2
+}
+
 func main() {
 	sahaay()
 
@@ -75,6 +81,10 @@ func main() {
 		if strings.Compare(vikalp, "q") != 0 {
 			fmt.Printf("%.2f %s %.2f = %.2f\n", samooh.sankhya1, vikalp, samooh.sankhya2, samooh.parinam)
 		}
+
+		var parinam1, parinam2, parinam3, parinam4 = test(samooh.sankhya1, samooh.sankhya2)
+		fmt.Printf("\nટેસ્ટનું પરિણામ = %.2f -- %.2f -- %.2f -- %.2f\n", parinam1, parinam2, parinam3, parinam4)
+
 		fmt.Print("\nનવા વિકલ્પનું ચયન કરો : ")
 	}
 
