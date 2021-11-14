@@ -15,14 +15,19 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("એક સંખ્યા લખો: ")
+	fmt.Println("એક સંખ્યા કે શબ્દ લખો: ")
 
-	var sankhya int32 = 0
-	fmt.Scanf("%d", &sankhya)
+	var sankhya string = ""
+	fmt.Scanf("%s", &sankhya)
 
-	var palindrome bool = false
-	if sankhya > 10 && sankhya < 100 {
-		palindrome = ((sankhya % 11) == 0)
+	var palindrome bool = true
+	var len int = len(sankhya)
+	fmt.Printf("શબ્દ: \"%s\" કુલ અક્ષર: %d\n", sankhya, len)
+	for idx := 0; (idx < len/2) && (palindrome == true); idx++ {
+		if sankhya[idx] != sankhya[len-idx-1] {
+			palindrome = false
+			break
+		}
 	}
 
 	var parinam string
@@ -31,5 +36,5 @@ func main() {
 	} else {
 		parinam = "નથી"
 	}
-	fmt.Printf("સંખ્યા %d પેલિન્ડ્રૉમ %s\n", sankhya, parinam)
+	fmt.Printf("\"%s\" પેલિન્ડ્રૉમ %s\n", sankhya, parinam)
 }
