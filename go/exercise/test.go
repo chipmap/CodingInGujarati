@@ -12,13 +12,22 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
-	fmt.Println("એક સંખ્યા કે શબ્દ લખો: ")
-
+	argc := len(os.Args)
 	var sankhya string = ""
-	fmt.Scanf("%s", &sankhya)
+
+	if argc < 2 {
+		fmt.Println("એક સંખ્યા કે શબ્દ લખો: ")
+		fmt.Scanf("%s", &sankhya)
+	} else {
+		fmt.Printf("કુલ આરગ %d\n", argc)
+		sankhya = os.Args[1]
+	}
 
 	var palindrome bool = true
 	var len int = len(sankhya)
