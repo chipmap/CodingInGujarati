@@ -15,9 +15,11 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
-func main() {
+// આ ફંક્શન વપરાશકર્તા પાસેથી સંખ્યા કે શબ્દ લઈ એ પેલિન્ડ્રૉમ છે કે કેમ એવું ચકાસે છે.
+func testPalindrome() {
 	argc := len(os.Args)
 	var sankhya string = ""
 
@@ -46,4 +48,11 @@ func main() {
 		parinam = "નથી"
 	}
 	fmt.Printf("\"%s\" પેલિન્ડ્રૉમ %s\n", sankhya, parinam)
+}
+
+func main() {
+	go testPalindrome()
+
+	time.Sleep(5 * time.Second)
+	fmt.Println("પ્રણામ!")
 }
